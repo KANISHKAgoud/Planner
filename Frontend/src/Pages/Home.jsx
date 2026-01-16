@@ -4,11 +4,12 @@ import { useState } from 'react'
 import girly from '../assets/backgrounds/girly.png'
 import dark from '../assets/backgrounds/dark.png'
 import Navbar from '../Components/Navbar'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
     const [mode, setmode] = useState("girly")
-    // const [bg, setbg] = useState(true)
+
 
     const background = () => {
         if (mode === "girly")
@@ -18,6 +19,7 @@ const Home = () => {
         return ""
     }
 
+
     return (
         <div>
             <Navbar setmode={setmode} />
@@ -25,21 +27,48 @@ const Home = () => {
             <div className='w-{100%} h-44 md:h-52 bg-cover' style={{ backgroundImage: mode ? `URL(${background()})` : `URL(${background(girly)})` }}>
             </div>
 
+            <div className='flex justify-around mt-6'>
+                {/* Quick adds starts from here  */}
 
-            <div className=' text-amber-50 mt-3 ml-2 w-[14rem]' style={{ backgroundColor: mode === "girly" ? "#D0A2F7" : "#111F35" }}>
-                Quick Adds
-            </div>
+                {/* Quick Adds */}
 
-            <div>
-                <div>
-                    Journal
+                <div className="px-4 w-2xs">
+                    <div
+                        className="inline-block px-4 py-1 rounded text-sm font-semibold"
+                        style={{
+                            backgroundColor: mode === "girly" ? "#E9D5FF" : "#1F2A44",
+                            color: mode === "girly" ? "#4C1D95" : "#E5E7EB",
+                        }}>
+                        Quick Adds
+                    </div>
+
+                    <div className='bg-black opacity-30 h-1 mt-1.5'></div>
+
+
+                    <Link to="/Journal" className=''>
+                        <li className='list-none font-semibold'>Journal</li>
+                    </Link>
+
                 </div>
-                <button onClick={addbox}>
-                    New Entry
-                </button>
-            </div>
-        </div>
-    )
-}
 
-export default Home
+                {/* My life starts from here  */}
+
+                <div className='w-3xl px-6 font-medium font-sans'> 
+                    My Life
+                </div>
+
+                {/* navigation starts from here */}
+
+                <div className='w-2xs px-4'>
+                    hey
+                </div>
+
+
+            </div>
+
+
+        </div>
+    );
+};
+
+export default Home;
