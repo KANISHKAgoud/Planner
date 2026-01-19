@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useContext} from 'react'
 import { useState } from 'react'
 import girly from '../assets/backgrounds/girly.png'
 import dark from '../assets/backgrounds/dark.png'
@@ -10,10 +10,12 @@ import Media from '../Components/heroComponents/MediaComponent'
 import Finance from '../Components/heroComponents/FinanceComponent'
 import Mylife from '../Components/mylife'
 import Navigation from '../Components/navigation'
+import { ThemeContext } from '../context/ThemeContext'
 
 
 const Home = () => {
-    const [mode, setmode] = useState("girly")
+    // const [mode, setmode] = useState("girly")
+    const { mode } = useContext(ThemeContext);
 
 
     const background = () => {
@@ -27,7 +29,8 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar setmode={setmode} />
+            {/* <Navbar setmode={setmode} /> */}
+            <Navbar/>
 
             <div className='w-{100%} h-44 md:h-52 bg-cover' style={{ backgroundImage: mode ? `URL(${background()})` : `URL(${background(girly)})` }}>
             </div>
@@ -69,20 +72,18 @@ const Home = () => {
                     <div className='font-medium font-sans'>
                         My Life
                     </div>
-                        <Mylife mode={mode} />
+                        <Mylife/>
                 </div>
 
 
                 {/* navigation starts from here */}
 
                 <div className='w-2xs px-4 hidden md:block'>
-                    <Navigation mode={mode} />
+                    <Navigation/>
                 </div>
 
 
             </div>
-
-
         </div>
     );
 };

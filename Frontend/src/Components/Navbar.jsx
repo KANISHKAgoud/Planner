@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState , useContext } from "react";
+import { ThemeContext } from '../context/ThemeContext'
 
-const Navbar = ({ setmode }) => {
+const Navbar = () => {
 
   const [open, setOpen] = useState(false);
+  const {setMode} = useContext(ThemeContext)
 
   return (
     <div>
@@ -22,13 +24,13 @@ const Navbar = ({ setmode }) => {
           </div>
 
           <button
-            onClick={() => setmode("girly")}
+            onClick={() => setMode("girly")}
             className="px-4 py-2 rounded-xl bg-pink-400 text-white hover:bg-pink-500">
             Girly
           </button>
 
           <button
-            onClick={() => setmode("dark")}
+            onClick={() => setMode("dark")}
             className="px-4 py-2 rounded-xl bg-gray-800 text-white hover:bg-black">
             Dark
           </button>
@@ -64,11 +66,11 @@ const Navbar = ({ setmode }) => {
             <i className="fa-solid fa-user"></i> Sign in
           </Link>
 
-          <button onClick={() => { setmode("girly"); setOpen(false); }}>
+          <button onClick={() => { setMode("girly"); setOpen(false); }}>
             <i className="fa-solid fa-heart text-pink-500"></i> Girly Mode
           </button>
 
-          <button onClick={() => { setmode("dark"); setOpen(false); }}>
+          <button onClick={() => { setMode("dark"); setOpen(false); }}>
             <i className="fa-solid fa-moon"></i> Dark Mode
           </button>
         </div>

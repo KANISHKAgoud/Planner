@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ThemeContext } from '../context/ThemeContext'
+import { useContext } from 'react'
 // Bright Mode
 import gDaily from '../assets/Mylife/girlyMylife/1st.png'
 import gPlanner from '../assets/Mylife/girlyMylife/2nd.png'
@@ -17,7 +19,9 @@ import dStudy from '../assets/Mylife/darkMylife/4th.png'
 import dJournal from '../assets/Mylife/darkMylife/5th.png'
 import dMeal from '../assets/Mylife/darkMylife/6th.png'
 
-const Mylife = ({ mode }) => {
+const Mylife = () => {
+    const context = useContext(ThemeContext)
+
     const [Listcard, setListcard] = useState([
         {
             "title": "Daily Planner",
@@ -63,19 +67,20 @@ const Mylife = ({ mode }) => {
     ])
     return (
         <div>
+
             <div className="flex flex-wrap gap-4 mt-4">{Listcard.map((detail) => {
                 return (
                     <div
-                        key={detail.title}
-                        className="rounded-xl overflow-hidden shadow-md border bg-white w-full sm:w-[48%] md:w-[30%]"
+                    key={detail.title}
+                    className="rounded-xl overflow-hidden shadow-md border bg-white w-full sm:w-[48%] md:w-[30%]"
                     >
                         <div
                             className="w-full h-32 bg-cover bg-center"
                             style={{
                                 backgroundImage:
-                                    mode === "girly"
-                                        ? `url(${detail.girly})`
-                                        : `url(${detail.dark})`,
+                                context === "girly"
+                                ? `url(${detail.girly})`
+                                : `url(${detail.dark})`,
                             }}
                         ></div>
                         <div className="p-2 text-sm font-medium">

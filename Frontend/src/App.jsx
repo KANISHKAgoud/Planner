@@ -13,10 +13,8 @@ import Weekly_Planner from './Pages/Weekly_Planner'
 import Daily_planner from './Pages/Daily_planner'
 
 function App() {
-
   return (
     <>
-    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/Sign_in' element={<Sign_in />} />
