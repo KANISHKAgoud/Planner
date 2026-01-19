@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const JournalComponent = () => {
@@ -10,6 +10,14 @@ const JournalComponent = () => {
     ])
     const [Entry, setEntry] = useState(false)
 
+    useEffect(() => {
+        fetch("http://localhost:3200/?type=Journaldata")
+            .then(res => res.json())
+            .then(data => setTextList(data));
+            // .catch(err => console.error(err));
+    }, []);
+
+
     const NewEntry = () => {
         setEntry(true)
     }
@@ -18,15 +26,31 @@ const JournalComponent = () => {
         setNewText(e.target.value)
     }
 
-    const saveEntry = () => {
-        setTextList([...textList, newText])
-        setNewText("")
-        setEntry(false)
+    const saveEntry = async () => {
+        if (!newText.trim()) return;
+
+        const res = await fetch("http://localhost:3200/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: newText ,
+                type : "Journaldata"
+            }),
+        });
+
+        const saved = await res.json();
+        setTextList([...textList, saved]);
+        setNewText("");
+        setEntry(false);
+    };
+
+    const RemoveText = async(id) => {
+        await fetch(`http://localhost:3200/${id}?type=Journaldata`,{
+            method : "DELETE"
+        })
+        setTextList(textList.filter((item) => item._id !== id))
     }
 
-    const RemoveText = (index) => {
-        setTextList(textList.filter((_, i) => i !== index))
-    }
+
     return (
         <div>
             <Link to="/Journal" className=''>
@@ -39,23 +63,23 @@ const JournalComponent = () => {
             </div>
 
             <div>
-                {textList.map((text, index) => {
+                {textList.map((item,index) => {
                     return (
-                        <div key={index}>
+                        <div key={item._id || index}>
                             <div className='border-2 opacity-35 w-44 rounded-xl px-1 mt-1 flex justify-between items-center'>
 
-                                <span className="truncate">{text}</span>
+                                <span className="truncate">{item.text}</span>
 
-                                <i className="fa-solid fa-xmark cursor-pointer text-sm opacity-70 hover:opacity-100" onClick={() => RemoveText(index)}></i>
+                                <i className="fa-solid fa-xmark cursor-pointer text-sm opacity-70 hover:opacity-100" onClick={() => RemoveText(item._id)}></i>
                             </div>
                         </div>
                     )
                 })}
             </div>
 
-            <button className='border-2 opacity-35 rounded-xl px-1 mt-2' onClick={NewEntry} ><i class="fa-solid fa-pen-to-square"></i> New Entry</button>
+            <button className='border-2 opacity-35 rounded-xl px-1 mt-2' onClick={NewEntry} ><i className="fa-solid fa-pen-to-square"></i> New Entry</button>
 
-            <button className='mx-2 ' onClick={saveEntry}><i class="fa-solid fa-bookmark"></i></button>
+            <button className='mx-2 ' onClick={saveEntry}><i className="fa-solid fa-bookmark"></i></button>
 
         </div>
     )

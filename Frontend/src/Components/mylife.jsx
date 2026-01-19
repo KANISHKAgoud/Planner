@@ -63,11 +63,11 @@ const Mylife = ({ mode }) => {
     ])
     return (
         <div>
-            <div className="grid grid-cols-3 gap-4 mt-4">{Listcard.map((detail) => {
+            <div className="flex flex-wrap gap-4 mt-4">{Listcard.map((detail) => {
                 return (
                     <div
                         key={detail.title}
-                        className="rounded-xl overflow-hidden shadow-md border bg-white"
+                        className="rounded-xl overflow-hidden shadow-md border bg-white w-full sm:w-[48%] md:w-[30%]"
                     >
                         <div
                             className="w-full h-32 bg-cover bg-center"

@@ -4,7 +4,6 @@ import { useState } from 'react'
 import girly from '../assets/backgrounds/girly.png'
 import dark from '../assets/backgrounds/dark.png'
 import Navbar from '../Components/Navbar'
-import { Link } from 'react-router-dom'
 import Journal from '../Components/heroComponents/JournalComponent'
 import Study from '../Components/heroComponents/StudyComponent'
 import Media from '../Components/heroComponents/MediaComponent'
@@ -38,7 +37,7 @@ const Home = () => {
 
                 {/* Quick Adds */}
 
-                <div className="px-4 w-2xs">
+                <div className="px-4 w-2xs hidden md:block">
                     <div
                         className="inline-block px-4 py-1 rounded text-sm font-semibold"
                         style={{
@@ -66,7 +65,7 @@ const Home = () => {
 
 
                 {/* My life starts from here  */}
-                <div className='w-3xl px-6'>
+                <div className='w-full md:w-3xl px-4 md:px-6'>
                     <div className='font-medium font-sans'>
                         My Life
                     </div>
@@ -76,7 +75,7 @@ const Home = () => {
 
                 {/* navigation starts from here */}
 
-                <div className='w-2xs px-4'>
+                <div className='w-2xs px-4 hidden md:block'>
                     <Navigation mode={mode} />
                 </div>
 
