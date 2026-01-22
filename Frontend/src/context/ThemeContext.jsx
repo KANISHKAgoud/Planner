@@ -1,5 +1,4 @@
-// import { createContext } from "react";
-// export const counterContext = createContext(0)
+
 import { createContext, useState } from "react";
 
 export const ThemeContext = createContext();

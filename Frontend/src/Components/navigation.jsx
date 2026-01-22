@@ -6,17 +6,17 @@ import { ThemeContext } from '../context/ThemeContext'
 
 
 const Navigation = () => {
-    const value = useContext(ThemeContext)
+    const {mode} = useContext(ThemeContext)
     return (
         <div>
-            <div className='w-full h-72 bg-cover' style={{ backgroundImage: value === "girly" ? `URL(${gNavigation})` : `URL(${dNavigation})` }}>
+            <div className='w-full h-72 bg-cover' style={{ backgroundImage: mode === "girly" ? `URL(${gNavigation})` : `URL(${dNavigation})` }}>
 
             </div>
             <div
                 className="inline-block px-4 py-1 rounded text-sm text-center font-semibold mt-4"
                 style={{
-                    backgroundColor: value === "girly" ? "#E9D5FF" : "#1F2A44",
-                    color: value === "girly" ? "#4C1D95" : "#E5E7EB",
+                    backgroundColor: mode === "girly" ? "#E9D5FF" : "#1F2A44",
+                    color: mode === "girly" ? "#4C1D95" : "#E5E7EB",
                 }}>
                 Navigation
             </div>

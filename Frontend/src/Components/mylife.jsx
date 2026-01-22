@@ -20,7 +20,7 @@ import dJournal from '../assets/Mylife/darkMylife/5th.png'
 import dMeal from '../assets/Mylife/darkMylife/6th.png'
 
 const Mylife = () => {
-    const context = useContext(ThemeContext)
+    const {mode} = useContext(ThemeContext)
 
     const [Listcard, setListcard] = useState([
         {
@@ -78,7 +78,7 @@ const Mylife = () => {
                             className="w-full h-32 bg-cover bg-center"
                             style={{
                                 backgroundImage:
-                                context === "girly"
+                                mode === "girly"
                                 ? `url(${detail.girly})`
                                 : `url(${detail.dark})`,
                             }}
