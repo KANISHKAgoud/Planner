@@ -1,5 +1,5 @@
 import express from "express";
-import { connection } from "./config.js";
+import { collectionName, connection } from "./config.js";
 import { ObjectId } from "mongodb";
 import cors from "cors"
 
@@ -66,6 +66,48 @@ app.delete("/:id", async (req, res) => {
   await collection.deleteOne({ _id: new ObjectId(req.params.id) });
   res.json({ success: true });
 });
+
+app.get("/Daily_planner", async (req,res)=>{
+  const db = await connection()
+  const collection = await db.collection("Daily-Planner")
+  const data = await collection.find().toArray()
+  // res.send("Done!")
+  res.json(data)
+})
+
+app.post("/Daily_planner", async(req,res) =>{
+  const {Time,Task,Notes,Done} = req.body
+  const db = await connection()
+  const collection = await db.collection("Daily-Planner")
+  const result = await collection.insertOne({Time : Time , Task : Task , Notes : Notes ,Done : Done})
+  res.json({id : result.insertedId ,
+     Time : Time,
+    Task : Task ,
+     Notes : Notes,
+    Done: Done})
+})
+
+app.delete("/Daily_planner/:id", async(req,res)=>{
+  const db = await connection()
+  const collection = await db.collection("Daily-Planner")
+  const result = await collection.deleteOne({ _id : new ObjectId(req.params.id)})
+  res.json({success: true})
+})
+
+app.put("/Daily_planner/:id" , async(req,res) =>{
+  const {Time, Task , Notes , Done} = req.body
+  const db = await connection()
+  const collection = await db.collection("Daily-Planner")
+  const result = await collection.updateOne({_id : new ObjectId(req.params.id)} , {
+    $set : { 
+      Time,
+      Task  , 
+      Notes , 
+      Done 
+    }
+  })
+  res.json({_id : result.ObjectId , Time , Task , Notes, Done})
+})
 
 app.listen(3200, () => {
   console.log("Server running on port 3200");
