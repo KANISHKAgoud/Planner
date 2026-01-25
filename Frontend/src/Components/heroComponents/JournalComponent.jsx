@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom'
 
 const JournalComponent = () => {
     const [newText, setNewText] = useState("")
-    const [textList, setTextList] = useState([
-        "💜 Gratitude",
-        "🎤 Reflection",
-    ])
+    const [textList, setTextList] = useState([])
     const [Entry, setEntry] = useState(false)
 
     useEffect(() => {

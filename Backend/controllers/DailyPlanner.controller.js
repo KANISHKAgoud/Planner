@@ -42,3 +42,26 @@ export const deletedata = async(req, res) =>{
     const result = await collection.deleteOne({_id : new ObjectId(req.params.id)})
     res.json({success : true})
 }
+
+export const getdataDB = async(req,res)=>{
+    const {type} = req.params
+    const dbconnection = await connection()
+    const collection = await dbconnection.collection(type)
+    const data = await collection.find().toArray()
+    res.json(data)
+}
+
+export const postdataDB = async (req,res) => {
+    const {type} = req.params
+    const {Task_text , Done} = req.body
+    const dbconnection = await connection()
+    const collection = await dbconnection.collection(type)
+    const data = await collection.insertOne({
+        Task : Task_text ,
+        Done : Done 
+    })
+    res.json({_id : data.insertedId , 
+        Task : Task_text,
+        Done : Done
+    })
+}
