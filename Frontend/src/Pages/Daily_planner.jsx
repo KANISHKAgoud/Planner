@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Navbar from "../Components/Navbar"
+import Footer from "../Components/footer"
 import { ThemeContext } from '../context/ThemeContext'
 import girlymode from "../assets/backgrounds/Daily-routine-girly.png"
 import darkmode from "../assets/backgrounds/Daily-routine-dark.png"
@@ -104,6 +105,8 @@ const Daily_planner = () => {
   return (
     <div>
       <Navbar />
+
+      {/* Daily backgroud image url  */}
       <div
         className="w-full h-72 bg-cover"
         style={{
@@ -117,6 +120,7 @@ const Daily_planner = () => {
         Daily Planner
       </div>
 
+        {/* Today's Schedule task  */}
       <div className='mt-6 mx-6'>
         <div className=' font-semibold text-lg'>
           Today's Schedule
@@ -185,12 +189,6 @@ const Daily_planner = () => {
 
           </input>
           <div className='w-[20%] border-r-2 border-l-2 text-center'>
-            
-            {/* <button>
-              {Task.Done ? <i className="fa-solid fa-square-check"></i> :
-                <i className="fa-regular fa-square"></i>
-              }
-            </button> */}
           </div>
         </div>}
 
@@ -204,6 +202,21 @@ const Daily_planner = () => {
 
         </div>
       </div>
+
+      <div className='w-[25%] my-6 mx-4 border-2 rounded-2 flex justify-center align-center '>
+        <div className='flex gap-2 justify-center align-center mt-2'>
+          <i className="fa-solid fa-thumbtack"></i>
+          <div className='font-semibold text-lg'>Reminders</div>
+        </div>
+        <div>
+          <div className='bg-black opacity-30 h-1 w-[80%]'></div>
+
+          <div>hey</div>
+        </div>
+      </div>
+
+
+      <Footer/>
     </div>
   )
 }
