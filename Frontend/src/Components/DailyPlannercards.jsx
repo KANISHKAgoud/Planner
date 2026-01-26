@@ -43,7 +43,7 @@ const DailyPlannercards = ({
               border rounded-2xl px-3 py-2 
               backdrop-blur-sm
               shadow-sm hover:shadow-md 
-              transition-all duration-200
+              transition-all duration-200 
               ${
                 mode === "girly"
                   ? "border-purple-300/40 bg-purple-100/40"
