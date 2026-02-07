@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import Navbar from '../Components/Navbar'
 import girly from "../assets/backgrounds/weeklyPlannergirly.png"
 import dark from "../assets/backgrounds/weeklyPlannerdark.png"
-import skin_Profile from '../Components/weekly-Planner-components/skin_Profile'
+// import skin_Profile from '../Components/weekly-Planner-components/skin_Profile'
 
 const Weekly_Planner = () => {
   const { mode } = useContext(ThemeContext)
@@ -26,8 +26,8 @@ const Weekly_Planner = () => {
             Weekly Planner
           </div>
 
-          <div className='bg-black opacity-30 h-1 mt-6'></div>
-            <skin_Profile/>
+          {/* <div className='bg-black opacity-30 h-1 mt-6'></div>
+            <skin_Profile/> */}
 
         </div>
 
