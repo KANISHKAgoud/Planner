@@ -14,8 +14,8 @@ const Weekly_Planner = () => {
       <div className='w-full h-72 bg-cover' style={{ backgroundImage: mode === "girly" ? `URL(${girly})` : `URL(${dark})` }}>
       </div>
 
-      <div className=' w-full flex mt-8 gap-8'>
-        <div className='w-[20%] mx-8'>
+      <div className=' w-full mt-8 mx-8'>
+        <div className='w-[20%]'>
 
           <div
             className="inline-block px-4 py-1 rounded text-sm font-semibold"
@@ -31,8 +31,8 @@ const Weekly_Planner = () => {
 
         </div>
 
-        <div className='w-[65%] border-2'>
-          week days are here
+        <div className='w-[65%] border-2 mt-8'>
+          
         </div>
 
       </div>

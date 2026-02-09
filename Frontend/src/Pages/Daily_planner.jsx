@@ -261,7 +261,7 @@ const Daily_planner = () => {
                 <span className="md:hidden font-semibold">Notes: </span>
                 {Editingid === items._id
                   ? <input type="text" name="Notes" value={newtask.Notes} onChange={Handlechange} />
-                  : items.Notes}
+                  : items.Note}
               </div>
 
               <div className="md:w-[20%] border md:border-2 text-center flex gap-4 justify-center">
