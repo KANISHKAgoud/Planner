@@ -47,7 +47,7 @@ const DailyPlannercards = ({
               ${
                 mode === "girly"
                   ? "border-purple-300/40 bg-purple-100/40"
-                  : "border-gray-400/30 bg-gray-800/20 text-white"
+                  : "border-slate-700/60 bg-slate-900/60 text-slate-100 hover:bg-slate-800/70 shadow-lg shadow-black/30"
               }`}
           >
             <button
@@ -86,7 +86,7 @@ const DailyPlannercards = ({
             onClick={() => onAdd(type)}
             className="w-1/2 rounded-2xl text-white py-1"
             style={{
-              backgroundColor: mode === "girly" ? "#4C1D95" : "#E5E7EB",
+              backgroundColor: mode === "girly" ? "#4C1D95" : "#18372d",
             }}
           >
             Add
@@ -96,7 +96,7 @@ const DailyPlannercards = ({
             onClick={onSave}
             className="w-1/3 rounded-2xl text-white py-1"
             style={{
-              backgroundColor: mode === "girly" ? "#4C1D95" : "#E5E7EB",
+              backgroundColor: mode === "girly" ? "#4C1D95" : "#18372d",
             }}
           >
             Save

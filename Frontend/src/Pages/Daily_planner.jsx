@@ -298,9 +298,9 @@ const Daily_planner = () => {
         <div className='mt-4 flex justify-center gap-4'>
 
 
-          <button onClick={addtask} style={{ backgroundColor: mode === "girly" ? "#4C1D95" : "#E5E7EB" }} className='px-4 text-white cursor-pointer'>Add Task</button>
+          <button onClick={addtask} style={{ backgroundColor: mode === "girly" ? "#4C1D95" : "#18372d" }} className='px-4 text-white cursor-pointer'>Add Task</button>
 
-          <button onClick={() => (Editingid ? EditTask(Editingid) : Savetask())} style={{ backgroundColor: mode === "girly" ? "#4C1D95" : "#E5E7EB" }} className='px-4 text-white cursor-pointer'>Save your task </button>
+          <button onClick={() => (Editingid ? EditTask(Editingid) : Savetask())} style={{ backgroundColor: mode === "girly" ? "#4C1D95" : "#18372d" }} className='px-4 text-white cursor-pointer'>Save your task </button>
 
         </div>
       </div>
